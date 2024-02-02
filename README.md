@@ -14,7 +14,7 @@
 1. Run `npm install`
 
 ## Test the Setup
-1. Start debugging the API and run `npm start` in the `client` directory. 
+1. Start debugging the API and run `npm run dev` in the `client` directory. 
 1. You should see the login view when the UI opens. 
 1. Attempt to login with `admina@strator.comx` and the password you set the value of `AdminPassword` to in the user-secrets
 1. If the setup succeeded, you should see a welcome message, and a `User Profiles` menu option along with a logout button. 
