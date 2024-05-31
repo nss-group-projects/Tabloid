@@ -473,5 +473,7 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+migrations/
+
 # Windows shortcuts
 *.lnk
