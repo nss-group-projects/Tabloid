@@ -19,11 +19,22 @@ This project targets .NET 10.
 
 ## Test the Setup
 
-1. Start debugging the API.
+1. Start debugging the API. Swagger should open in your browser. It won't list any endpoints yet, because building them is your team's job.
 1. In your client repository, run `npm install` and then `npm run dev`.
-1. You should see the login view when the UI opens.
-1. Attempt to login with `admina@strator.comx` and the password you set the value of `AdminPassword` to in the user-secrets
-1. If the setup succeeded, you should see a welcome message, and a `User Profiles` menu option along with a logout button.
+1. If the setup succeeded, you should see the Tabloid navbar and a welcome message.
+
+## Seeded Users
+
+The database is seeded with these users. Every one of them has the password you set as `AdminPassword` in your user-secrets. The first two are admins.
+
+| Email | User name | Admin |
+|---|---|---|
+| `admina@strator.comx` | Administrator | Yes |
+| `john@doe.comx` | JohnDoe | Yes |
+| `jane@smith.comx` | JaneSmith | No |
+| `alice@johnson.comx` | AliceJohnson | No |
+| `bob@williams.comx` | BobWilliams | No |
+| `Eve@Davis.comx` | EveDavis | No |
 
 > **NOTE:** Every new migration you create will include `UpdateData` calls for the seeded users' `PasswordHash` column. This is expected. The hash is generated from your `AdminPassword` secret with a random salt each time the project builds, so EF Core always sees it as changed.
 
