@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Tabloid.Models;
@@ -32,6 +33,8 @@ public class UserProfile
 
     public string IdentityUserId { get; set; }
 
+    // Never send the IdentityUser to the client. It includes the PasswordHash.
+    [JsonIgnore]
     public IdentityUser IdentityUser { get; set; }
 
     public string FullName

@@ -40,6 +40,10 @@ public class AuthController : ControllerBase
             string password = creds.Substring(separator + 1);
 
             var user = _dbContext.Users.Where(u => u.Email == email).FirstOrDefault();
+            if (user == null)
+            {
+                return new UnauthorizedResult();
+            }
             var userRoles = _dbContext.UserRoles.Where(ur => ur.UserId == user.Id).ToList();
             var hasher = new PasswordHasher<IdentityUser>();
             var result = hasher.VerifyHashedPassword(user, user.PasswordHash, password);
@@ -70,7 +74,7 @@ public class AuthController : ControllerBase
 
             return new UnauthorizedResult();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return StatusCode(500);
         }
@@ -86,7 +90,7 @@ public class AuthController : ControllerBase
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme).Wait();
             return Ok();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return StatusCode(500);
         }
